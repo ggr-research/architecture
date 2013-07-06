@@ -1,0 +1,254 @@
+This document collects elementary aspects and information of software architecture.
+As a basic reference, we refer to the ``Handbuch der Software-Architektur''.
+
+The report is organized according to the handbook. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Construction and Design of Architectures}
+\label{sec:construction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%-------------------------------------
+\subsection{Architecture Representation with UML}
+
+First of all some basic definitions.
+
+\begin{definition}[Architecture Description]
+A description of an architecture is a set of models like UML models or textual specifications.
+\end{definition}
+
+
+\begin{definition}[Viewpoint]
+A viewpoint covers related concerns that are determined by the stakeholders.
+A viewpoint also describes the used modeling and notations.
+\end{definition}
+
+\begin{definition}[View]
+A view describes a concrete System from a certain viewpont.
+Views structure the description of archtectures, i.e., which
+models are used but they do not describe the architecture itself,
+which is covered in the models of an architecture.
+\end{definition}
+
+
+UML contains 13 types of diagrams, 6 structural and 7 behavioral diagrams.
+The structural diagrams are: class, object, component, package, deployment and 
+composit structure diagrams.
+The behavioral diagrams contain state charts, use-case diagram,
+activity diagrams, sequence diagrams, timing diagrams interaction diagrams and communication diagrams.
+
+In UML the \emph{static viewpoint} is the most commonly used. This viewpoint covers elements and how
+the are related to each other. 
+
+The component-based development has emphasized the need of interface modeling for 
+cases where a system is composed of various elements and parts.
+
+\begin{definition}[Interface]
+An interface defines a contract.
+We distinguish between required and provided interfaces.
+\end{definition}
+
+
+Component diagrams are useful if a system is composed of various parts. Such parts usually implement
+a certain behavior and they can be composed and re-used (often independently of each other).
+
+\begin{definition}[Component]
+Components are modular parts of a system. Their content and behavior is transparently
+capsulated and their functionalilty is clearly described.
+Interfaced of components are clearly specified.
+\end{definition}
+
+The composit structure diagrams are new in UML 2. They describe the internal
+structure of a class (or of a classification element) and their collaboration.
+
+Package diagrams describe packages and their (private and public) elements. Packages
+can not be instantiated.
+
+Non-functional requirement are not directly coverd by UML.
+However, there are several languages for non-functional requirements
+liek qML.
+
+
+The \textbf{Meta-model of UML 2 for architecture elements} is shortly reflected in the following.
+The graphical diagrams constitute a concrete syntax for UML.
+
+%%----------------
+\subsection{Languages for Architecture Descriptions}
+
+UML is not a pure language for the description of architecutres, but it is often used for architectures.
+
+\begin{definition}[Language for Architecture]
+A language for architectures is a notation for a formal description of architectures.
+\end{definition}
+
+One of the first langauges were ADLs (architecture descrption languages).
+Some rpresentatives of ADLs are Acme, Aesop, Darwin, etc.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%---------
+
+\subsection{Principles of Architecture and Component Development}
+
+The development is an iterative process. We start with the analysis of requirements and goals,
+the assessment of requirements, the product development, test and integration and planning of the next iteration.
+
+
+\paragraph{Design Principles}
+Severl design principles provide best practices and guidelines. Some of the most important ones are
+summarized as follows:
+
+\begin{itemize}
+	\item \textbf{Abstraction:} The goal of abstraction is to reduce complexity since 
+	unimportant aspects are neglected.
+	\item \textbf{Modularization:} Complexity can also be reduced by modularization in which a system is decomposed
+	into a set of small parts and elements. Quite often, elements are loosely coupled.
+	\item \textbf{Encapsulation:}  The recognition and representation of dependencies can be
+	  improved by encapsulation. Information hiding is one aspect of encapsulation.
+	\item \textbf{Hierarchical decomposition.} Another means to reduce the complexity is hierarchical decomposition
+	in which \emph{aggregation} and \emph{generalization} relationships organize elements in a hierarchical manner.
+	Aggregations are mainly used for higher level refinement where a system is decomposed into a subsystem.
+	\item \textbf{Separation of concerns:} The basic idea of separation of concers is to devide responsibility
+	  and tasks to elements.
+	\item \textbf{Uniformity:} This principles suggests to use and re-use common 
+	  and existing structures, schemas and patterns.	
+\end{itemize}
+
+%%------------------------
+\subsection{Model-driven Software Engineering}
+
+While model-driven software engineering has gained has gained widespread popularity
+the discussion in the following reflects its usage for software architectures.
+
+The overall principles of MDE is to raise the abstraction level. With the use of domain-specific
+languages the goal is to directly generate a suitable software and reduce time and costs in
+the software development life-cycle. 
+
+\begin{definition}[Model]
+A model describes a real system in a simplified and abstracted way.
+(Usually, a model has a certain representation purpose.)
+\end{definition}
+
+\begin{definition}[Metamodel]
+A metamodel is a specification of constituents and rules how they can be used. 
+A metamodel contains an abstract syntax and at least one concrete syntax, as well
+as a static and dynamic semantics.
+\end{definition}
+
+
+\begin{definition}[Instance of a Metamodel]
+A model is an instance of a metamodel. A model is conform to a metamodel.
+This means that the consituents of the metamodel are correctly used according to
+the specified rules.
+\end{definition}
+
+The abstract syntax describes the set of syntactic correct instances of a
+metamodel. This is comparable to an abstract syntax tree of a programming language.
+In contrast, the concrete syntax desfines a certain representation of an instance of a metamodel.
+In a programming language, this would be a concrete program code. 
+For instance, a UML diagram is a possible concrete syntax, while
+an XML serialization another concrete syntax is.
+%%%%%%
+
+%%----------------------------
+\subsection{The Design of Service-oriented Architectures}
+
+The notion of service-oriented architecture (SOA) refers to the design
+and development of architectures for distributed systes at a rather high
+level of abstraction.
+The goal is to design flexible and easily adaptable systems. 
+
+\paragraph{The SOA Concept}
+The principle of SOA is to build an architecture of a system or
+application doamin (on a rather high abstraction level) based on business processes.
+The architecture muzst be efficiently adapted if the business  processes are changes.
+
+\begin{definition}[Service]
+A service is some functionality that is offerend
+by a service provider and used by a service consumer
+\end{definition}
+
+\begin{definition}[Service-oriented Architecture]
+Service-oriented architecture (SOA) is an architectural concept at a high abstraction level.
+It is based on the SOA reference architecture. 
+\end{definition}
+
+We distinguish between four \emph{categories} of services:
+(i)~data components mange an excerpt of business data. The offer CRUD operations
+and consistency checking on data;
+(ii)~functions implement certain business functionality;
+(iii)~processes implement one or multiple business processes.
+These processes can either run automatically or by manual interaction.
+(iv)~interaction components are active elements. They trigger and instantiate
+business processes, obtain and send events and offer interfaces for the interaction
+with (external) (human) users.
+
+A fundamental principle of SOA is the separation of concerns and the component orientation.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Evolution of Architectures}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The main effort in the IT management life-cyle is maintenance and evolution.
+Thus, we will study the evolution of software architectures. The evolution 
+of software is an adaptation of the software architecture in order to meet
+modified requirements.
+
+%---
+\subsection{Basics of Evolution}
+
+Evolution is necessary as requirements change over time. If evolution of
+software architectures can be improved then the original
+planning of an architecture becomes easier since not
+all eventual cases of adaptations must be incorporated in the architecture.
+To remedy this, several techniques like refactoring are used.
+
+MDE relies on transformations (vertical and horizontal transformations).
+Transformations are useful means evolution since sertain changes might be covered be 
+transformations in which one model is transformed into another model.
+
+Refactorings contain a set of transformation rules.
+In order to check whether a refactoring meets the intended purpose,
+either validation / verification or testing can be used.
+
+% ----
+\subsection{Reverse Engineering of Descriptions of Software Architectures}
+
+Descriptions of software architectures are not only relevant for the development
+of architectures, but alos for the evolution of legay systems (i.e, old software).
+Such systems are often complex and have been changed multiple times
+by different engineers. Quite often, there is either no architecture description or
+it is out-dated. 
+
+\begin{definition}[Reverse Engineering]
+Reverse engineering is the process of the analysis of a system in order
+to achieve the following targets:
+ \begin{itemize}
+	 \item the identification of components that constitute the system
+	       and how these componentes are related to each other;
+	 \item the representation of the system at a higher level of abstraction
+ \end{itemize}
+\end{definition}
+
+Reverse engineering is always \emph{goal oriented}, i.e., there is always a
+certain purpose.
+Reverse engineering can be considered as a bottom-up architecture construction.
+
+
+\subsection{Migration of Legcy Systems (Old Systems)}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Management of Architectures}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reuse of Architectures}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

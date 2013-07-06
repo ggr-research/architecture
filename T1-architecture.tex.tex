@@ -1,0 +1,114 @@
+
+This document describes basic principles of software architectures,
+including architectures for IoT and cloud plattforms.
+In essence, it is an overview of existing approaches in te FInest
+and LoFIP project.
+
+
+\section{FInest Architecture}
+
+The goal of the FInest is to develop a Future Internet enabled ICT platform with a dedicated
+purpose to enable the integration within transport and logistics domain.
+
+The FInest platform should be customizable for specific business needs.
+
+The FInest Platform offers a generic, configurable set of services
+for the logistic domain.
+FInest follows the TAM specification to describe architectures.
+TAM is used on two different levels, the \emph{conceptual level} to describe
+high-level architectures in low details and on \emph{design level}.
+
+TAM is used at four different modeling levels, where at each level different
+TAM diagrams are used.
+
+\begin{itemize}
+	\item The \textbf{initial conceptual architecture} is described by block diagrams.
+	   It describes the overall architecture at the conceputal level.
+	\item The \textbf{technical design level} extends the block diagrams with \emph{component diagrams}
+	    to provide a more technical view on the architecture.
+	\item The \textbf{detailed technological specification} use package and class diagrams
+	      to give a more complete technical view.
+	 \item Finally, \textbf{detailed examples} help to illustrate technical and conceptual details from 
+	       the architecture. Examples are mainly described by sequence diagrams and class diagrams.
+\end{itemize}
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Initial Conceputal Architecture}
+
+The architecture should take into account the following design principles:
+\begin{itemize}
+	\item An extensible collection of components
+	\item loosely coupled and interoperable components (components can be independently be selected and aggregated
+	\item modular and decoupled design: every feature in a separate technical component
+\end{itemize}
+
+
+\subsubsection{High-level Architecture}
+
+\begin{itemize}
+	\item \textbf{Front End:} The front end layer provides a single point of user access via different devices.
+	  There is an integrated user interface to offer access for various devices like web, mobile, desktop, etc.
+	   The unser management and access control provide facilities for the registration of users and the
+		  access control for users. Users (business end-users) should have access to all information that is relevant 
+			for managing transport and logicstics processes. 
+ \item \textbf{Core Modules:} The middle layer consists of the functional core moduls that offer
+			the basic functionalities. All core modules are provided in form of  independent cloud-based services.
+			These \emph{modules} should support the marketing, planning, execution and completion of logistics processes.
+			In particular, there is a \emph{business collaboration module (BCM)} that keeps all information for the
+			execution of a logistic  process where various different business partners are involved. 
+			The \emph{E-contracting module (ECM)} provides computer support for service provider selection,
+			contract negotiation and contract management. The \emph{Event processing module} enables real-time tracing
+			and monitoring, as well as rule-based analysis of expected and unexpected events like triggering and re-planning
+			when necessary.
+			Finally, the transport planning module (TPM) is responsible for dynamic transport planning and re-planning.
+				\begin{enumerate}
+					\item The \emph{business collaboration module (BCM)} follow a data-centric modeling approach to
+					   cover information about the overall transport and logistics chan.
+						
+						 This module supports the inter-organizational (business-2-business) collaboration between
+						transport and logicstics network partners by tracking and tracing transports on the level of
+						 business processes. 
+					\item The \emph{E-Contracting Module (ECM)} is responsible for the contracting within the transport domain.
+					        The service, which is provided by the ECM includes the integration of marketplaces, bidding,
+									 negotiation, the execution of e-contracting selection and the management of contract selection
+									  and execution. 
+					          
+										To achieve this, the architecture contains a data repository for contract storage,
+										   an interface for contract demand manager and a contract manager for electronic contract
+											access and partner selection.
+					\item The \emph{Event processing module (EPM)} 		consists of a run-time engine and a set of rules.
+					The input are events (from several sources) and the output are detected situations and status descriptions
+					 of a running process. The EPM also takes care of event-driven monitoring and rule-based
+					 analysis of expected and unexpected events (e.g., triggering re-planning).
+					\item The \emph{Transport planning module (TPM)} consists of a planning engine to compose plans,
+					                   to search for dedicated services and to apply simulation of consider the service behavior.
+				\end{enumerate}
+ \item \textbf{Back End:} The back end is the access part to various external
+    legacy systems and standard business software, which are third party services and any
+Internet of Things (IoT) devices that might provide information during the transport life-cycle.
+\end{itemize}
+
+
+\subsubsection{Requirements for the Architecture}
+
+
+%%
+\paragraph{Back-End Requirements}
+
+The aim of the Back-end is to facilitate the integration of external systems (i.e., legacy systems,
+standard business software and third-party software) to enable an automated
+import and export of data into and from the platform.
+The requirements analysis for the Back-End is based on existing
+systems that the domain parters are using.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Recognized Research Aspects}
+
+\begin{itemize}
+	\item Customization of Architectures or more precisely the
+	   customization of configurable architectures.
+		 (see the description on Customization tools in D3.2 sect. 2.1.2)
+\end{itemize}

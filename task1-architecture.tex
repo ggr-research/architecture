@@ -33,13 +33,13 @@ A software architecture divides an application domain into well-defined and sepa
 responsibility.
 
 \begin{definition}[Architecture]
-Architecture is defined as the fundamental organization of a system,
+An architecture is defined as the fundamental organization of a system,
 embodied in its components, their relationships to each other and
-the environment, and the principles governing the design and
-evolution. (IEEE standard)
+the environment and the principles governing the design and
+evolution (IEEE standard).
 \end{definition}
 
-An alternative definitions of software architecture is~\cite{Buschmann1998POS}:
+An alternative definition of software architecture is, according to~\cite{Buschmann1998POS}:
 ``the structure of structures of the system, which comprise
 software components, the externally visible properties of those components and the relationships
 among them.''
@@ -51,11 +51,11 @@ the \emph{operational features} of the elements and
 the \emph{deployment} and \emph{hardware} (cf.~\cite{Rozanski2005SSA}).
 
 Due to the complexity of a system, a monolithic architecture might
-be incomplete, incorrect and hard to manage.
-A common principle is to partition a architecture into separate
+be incomplete, incorrect or hard to manage.
+A common principle is to partition an architecture into separate
 but interrelated \emph{views}.
 Each view describes a different aspect of the system.  
-Bass et al~\cite{Bass1998SAI} use the term ``architecture structure'' as synonym to view.
+Bass et al.~\cite{Bass1998SAI} use the term ``architecture structure'' as synonym to ``view''.
 
 \begin{definition}[View]
 A view is a representation of a whole system from the perspective of a related set of concerns.
@@ -66,22 +66,23 @@ A view is a representation of a whole system from the perspective of a related s
 
 Kruchten~\cite{Kruchten1995T41} introduced the 4+1 view model on architectures,
 depicted in Fig.~\ref{fig:viewmodel}.
-There are four \emph{architectural views}:
+The model consists of four \emph{architectural views}:
 \begin{itemize}
 	\item \textbf{Logical view}, also called \textbf{functional view}~\cite{Clements2001ESA}:
-	        This view is an abstraction of the system functions and their relationships. The users
-					 of this view are  \emph{domain} engineers and end users.
+	        This view is an abstraction of the system functions and their relationships. The audience
+					 of this view are \emph{domain} engineers and end users.
 	\item \textbf{Process view}, also called \textbf{concurrency view}
 	                or \textbf{thread view}~\cite{Clements2001ESA}:
 									 This view describes system processes and threads and how they communicate with each other.
 									This view is for system integrators, tester and engineers who are
-									responsible for performance and availability of the system.
+									responsible for the performance and availability of the system.
 	 \item \textbf{Deployment view}, also called \textbf{implementation view}~\cite{Clements2001ESA}:
                      
 	 \item \textbf{Physical view}
 \end{itemize}
 
-The fifth part of the view model are the scenarios.
+The fifth part of the view model is the use case view. It is a central part of the model since
+all architectural decisions must be based on use cases.
 
 \begin{figure}%
 \begin{center}
@@ -91,18 +92,19 @@ The fifth part of the view model are the scenarios.
 \end{center}
 \end{figure}
 
-The idea of the view model is generalized in the IEEE standard  by the notion of \emph{viewpoint}.
+This basic idea of the view model is generalized in the IEEE standard  by the notion of \emph{viewpoints}.
 According to~\cite{Rozanski2005SSA}, a viewpoint is defined as follows.
 
 \begin{definition}[Viewpoint]
 A viewpoint is a collection of patterns and conventions to construct one type of view.
-It describes the stakeholders of a particular viewpoint and the
-guidelines, principles and templates for building its view.
+It describes the stakeholders whose concerns  are reflected in the viewpoint
+and the guidelines, principles and templates for building its view.
 \end{definition}
 
 The term \emph{perspective} or \emph{architectural perspective} is used in~\cite{Rozanski2005SSA}
 to refer to \emph{non-functional requirements}. This perspective is orthogonal to
-the views of an architecture. Perspectives contain security, performance, availability and usability.
+the views of an architecture. Perspectives contain,
+among other aspects, security, performance, availability and usability.
 
 
 Different terms for types of software architectures and views are used in a study 
@@ -128,8 +130,8 @@ This distinction is based on a survey of (industrial) systems.
 This distinction is inspired by the phases of a development process:
 \emph{design time}, \emph{implementation time}, \emph{build time} and \emph{run time}.
 
-Regarding to the first classification, the \emph{conceptual architecture} and \emph{module architecure}
-refers to the \emph{logical view} (especially the module architecture).
+Regarding to the first classification, the \emph{conceptual architecture} and \emph{module architecture}
+refer to the \emph{logical view} (especially the module architecture).
 
 
 
@@ -224,7 +226,7 @@ Fig.~\ref{fig:comprehensive} illustrates this categorization.
 	
 	
 
-\ggr{use the term architecture and view interchangeably}
+\ggr{the terms architecture and view are used interchangeably in the remainder of this document.}
 
 
 
@@ -232,15 +234,17 @@ Fig.~\ref{fig:comprehensive} illustrates this categorization.
 \section{Conceptual Architecture}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The conceptual architecture is an initial architecture.
+The conceptual architecture is an initial architecture within the development process.
 It serves as the first response to stakeholder's needs.
-(There are also some arguments that it is focused on the domain-level.)
 
 The conceptual architecture (often called conceptual view) is focused
-on the functionality and quality attributes.
+on the functionality and on quality attributes of a system. The focus is on the domain-level,
+independent of a concrete implementation.
+It describes functionality, functions and sub-functions from a stakeholder and domain-oriented
+point of view.
 
 Tekinerdogan et al.~\cite{Tekinerdogan2008SAR} use the term ``conceptual architecture'',
-without any explanation. The modules in the model are specific for the domain,
+without any definition and explanation of this term. The modules in the model are specific for the domain,
 in this case for digital TV.
 %\ggr{This directly leads to the question }
 
@@ -251,7 +255,8 @@ domain-level responsibilities. It should cover how the system's architecture mee
 the immediate needs of its stakeholders.
 A component covers domain responsibilities. 
 The architecture originally describes the functional specification
-and is then iteratively further developed to cover additional aspects like performance, security, criticallity and so on.
+and is then iteratively further developed to cover additional aspects like performance, security,
+criticallity and so on.
 The conceptual architecture is influenced by non-functional concerns,
 but it is too abstract of a comprehensive treatment of quality aspects.
 
@@ -269,7 +274,7 @@ The conceptual architecture consists of the following elements:
 \end{itemize}
 
 \paragraph{Design of the Conceptual Architecture.}
-The design is an iterative process. The conceptual architecture is based on the functional requirements of the system.
+The design of an architecture is an iterative process. The conceptual architecture is based on the functional requirements of the system.
 Thus, the conceptual architecture helps  at the beginning of the development process to
 understand the system. In essence, we can outline the following steps:
  \begin{enumerate}
@@ -292,6 +297,7 @@ The conceptual architecture (or conceptual view) does not provide (implementatio
 like interfaces of components.
 In contrast, the logical architecture (or logical view) gives more details about the components
 and their relationships, including interfaces and communication specifications.
+In essence, it describes the functionality of the components.
 
 %\subsection{Work from Broy et al.}
 % Broy
@@ -311,13 +317,14 @@ the complete functionality of the system. It it the first model (in the level hi
 that describes the whole functionality.  
 
 Constituents of the logical architecture are the following:
-(i) Ports connect components to their environment.
-  (ii) Channels describe direct communication between components. A channel describes an abstract
-	communication by connecting two ports. (iii) Logical components is a unit (of function).
+(i) Logical components are units (of functions).
 	Formally, a logical components consists of a syntactic and semantic interface. The syntactic interface
 	describes types of the port (logical types). The semantic interface specifies the behavior, i.e., for
 	each syntactic valid input there is a well-defined output described. The behavior is state-oriented.
-
+(ii) Ports connect components to their environment.
+(iii) Channels describe direct communication between components. A channel describes an abstract
+communication by connecting two ports.
+	
 
 
 %%% logisches Systemmodell
@@ -331,11 +338,11 @@ A logical architecture is a user view. In the development process, a logical arc
 must be transformed to a software architecture.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Domain-oriented Architecture / Fachliche Architektur}
+\section{Domain-oriented Architecture (Fachliche Architektur)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The domain-oriented architecture / business architecture (or `fachline Architectur')
-is orthogonal to the previously introduced architectures and views.
+is \emph{orthogonal} to the previously introduced architectures and views.
 Most related is the area of enterprise architecture frameworks like TOGAF~\cite{togaf91}
 and Zachman~\cite{Zachman1987AFF}.
 
@@ -343,8 +350,11 @@ The domain-oriented architecture describes the concepts of an application domain
 independent of any software, implementation or platform.
 %It contains components of the domain including interfaces and behavior descriptions.
 
-\ggr{check this:} From my understanding, can be a conceptual and logical architecture (view),
+\ggr{check this:} From my understanding, a domain-oriented architecture
+can be a conceptual and logical architecture (view),
 but it must cover the entities of the corresponding application domain.
+A domain-oriented architecture seems to be closer related to the conceptual architecture
+as to the logical architecture since the key focus is on
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Technical Architecture}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -372,6 +382,18 @@ i.e., it must be complete~\cite{Posch2004BS}.
 
 The ``Leitstand'' architecture contains domain entities like ``Transportpl{\"a}ne'',
 ``LKW Fahrer'' and ``Disponent'', but it is not complete. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{More aspects about the term ``domain''}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  when talking about the domain, domain models are key building blocks
+%    when talking about domain modeling -- FODA is an essential means to build domain models,
+%           i.e., to describe a domain of interest.
+%                 a domain model is the products of a domain analysis
+
+
 
 \bibliographystyle{plain}
 \bibliography{bib-architecture}

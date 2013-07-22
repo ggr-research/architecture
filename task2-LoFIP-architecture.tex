@@ -1,0 +1,146 @@
+\documentclass{llncs} % , times
+
+\usepackage{amssymb, amsmath, graphicx, ltxtable, longtable, tabularx, url, ragged2e, xspace, verbatim, fancybox,tikz}
+\usepackage{scalefnt}
+\usepackage{relsize}
+\usepackage{hyperref}
+%\usepackage{paralist}
+%\usepackage{listings}
+
+\newcommand{\ggr}[1]{\textcolor{magenta}{comment Gerd: \textit{#1}}}
+
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{document}
+\title{LoFIP Architecture}
+ 
+
+\maketitle
+
+\begin{abstract}
+This is the second  task until July 23.
+The goal of this document is to describe possible extensions and modification of the
+``Leitstand'' architecture in LoFIP.
+In general, we are interested in the architecture of a ``Leitstand'' (control tower)
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The conceptual architecture of a control tower}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+According to our distinction of the different kinds of architectures and views on architectures,
+we refer to the LoFIP architecture as conceptual (or as logical) architecture.
+
+The LoFIP architecture consists of a \textbf{Front end}, a \textbf{back end} and 
+the \textbf{control tower} (or control tower core part).
+
+In the remainder of this document, we discuss the components of the \emph{control tower / ``Leitstand''}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The MONITOR component}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The monitor component is responsible for data harvesting, data filtering, data correlation, data aggregation
+and prediction. 
+The data harvesting / recognition obtains data directly from the IoT / IoS gateway. 
+For the prediction, the monitor component uses observed data but also stored information from the
+knowledge component.
+A typical task of the monitor component is to keep track of the shipment of a certain container.
+Predictions include issues like to provide estimations about the expected arrival of containers.
+
+Collected and aggregated data is usually passed to the analyze component.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{ANALYZE component}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The analyze component is looking for divergences (deviations).
+The goal is to observe situations and determine change needs if necessary.
+
+ Divergences can be obtained by an observation and comparison
+of component execution with respect to the behavior specifications (e.g., behavior specifications in terms of 
+business process models}. A comparison determines the degree of deviation from a process specification.
+The comparison might lead to two different results:
+  \begin{enumerate}
+		\item In case there are huge differences, these differences are forwarded to a process analyze and and
+		simulation component. 
+		 \item If the difference is not significant then it is just reported as a change for further improvement
+		  (and investigations).
+	\end{enumerate}
+
+Consider the following example to get the difference:
+If a trucker is late it is a deviation. If this might influence the overall process
+then is is an exception  and there will be some priory assessment.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{PLAN component}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The plan component is recognizing any alternative executions and provides 
+components to prioritize alternative executions. A changed plan represent / contains
+a set of desired changes.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{EXECUTE component}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The execute component has to schedule and perform the necessary changes to the system. 
+The execute component has to implement / realize the decisions made by the dispatcher.
+This is done either based on data from the planing component (plans / panning steps) or
+in terms of \emph{adaptations}.
+Typical adaptations are to retract and modify existing transport orders and plans
+like the route of the driver must be adapted once the dispatcher has changed the delivery planning.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Basics: The MAPE-K Reference Model}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+MAPE-K is a reference model for self-adaptive systems. 
+IBM has suggested a reference model for autonomic control loops~\cite{IBM2005}.
+The model is inspired by models
+of autonomous agents. Based on (sensor) input, the component monitors the managed elements
+and execute changes. The goal of actions (executions) is mainly specified by ECA-rules.
+
+As already described above, the MAPE-K architecture provides essential building blocks
+for self-adaptive systems. Each component provides a certain functionality:
+(i)~the \emph{monitor} function (component) is responsible for collecting data,
+then (ii)~the \emph{analyze} function takes into account the collected data and the current
+system state, makes predictions of future states and presents alternative (prioritized) possible
+future states,
+afterwards (iii)~the \emph{planing} component constructs the needed (adaptation) actions that have been
+proposed by the previous analyze function, and finally
+(iv)~the \emph{execute} function is responsible for controlling the execution of a plan.
+
+All functions share a common knowledge (base). 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion: Control Tower and the MAPE-K Reference Model as Architecture}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+At a first glance, the control tower architecture, which is based on the
+MAPE-K reference model, is an appropriate architecture for adaptive systems.
+
+As a next step, we want to generalize this architecture into two directions:
+\begin{enumerate}
+	\item Is there a more general description of the architecture that might even 
+	be applicable to any `control tower' independent of a particular domain.
+	 \item Until now, I cannot see the particular aspect of the ``Internet of Things''.
+	 It is actually an architecture for a self-adaptive system instead of an Internet of Things application.
+	
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{plain}
+\bibliography{bib-architecture}
+
+\end{document}

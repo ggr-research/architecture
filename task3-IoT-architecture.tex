@@ -19,19 +19,97 @@
 \maketitle
 
 \begin{abstract}
-This is the third  task until July 23.
-The goal is to study basics and fundamental requirements of the Internet of Things.
+This is the third  task until July 30.
+The goal is to study basics and fundamental requirements of
+an Future Internet architecture.
 \end{abstract}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The conceptual architecture of a control tower}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The MONITOR component}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Agenda -- Discussion July 23}
 
+\begin{itemize}
+	\item The distinction between these different architectures is fine.
+   \item TODO: look into the different terms from teh RE book:
+	       \begin{itemize}
+					 \item \emph{Data}
+					 \item \emph{functionality / functions}
+					  \item \emph{behavior}
+				 \end{itemize}
+	\item The observation is right, that inside the core architecture (Leitstand) there 
+	is nothing special wrt. the IoT / IoS.
+	    \begin{itemize}
+				\item this only holds for the Front end and Back end
+				\item TODO: Look into the details within the architecture to find what is special
+				         once we use / rely on IoT and IoS:
+								(1)~ANALYZE and (2)~MONITOR component must be studied \\
+								$\rightarrow$ this covers aspects like trust of information,
+								 availability of services, distribution of service. \\
+								$\rightarrow$ just think about everything that might
+								   influence the ANALYSIS and MONITORING if data / information is obtained from
+									  IoT and IoS
+			\end{itemize}
+  \item Further research questions:
+	     How does MAPE-K goes along with user interfaces (UI) --> does this hold, is there something special???
+	\item Further research questions:
+	      Think about the motivation of MAPE-K in the used context in LoFIP:
+				   (1)~business perspective (time value) and (ii) adaptive systems 
+\end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fundamentals and Terminology}
+
+In requirements engineering, there are three kinds of requirements artefacts:
+(1) goals, (2) scenarios and (3) \emph{solution oriented} requirements.
+The last group of artefacts, i.e., the solution oriented requirements representation
+should provide a \emph{conceptual} or \emph{logical} system solution
+(e.g., in terms of data models and UML class diagrams).
+Data models determine which data shall be represented in a system.
+Finally, a \emph{behavior} model describe the state of a system and the externally visible behavior.
+
+We summarize the different views for 
+documenting \emph{solution-oriented requirements} according to~\cite{Pohl2010RE}.
+There are three fundamental perspectives of software-intensive systems.
+In requirements engineering, these aspects are also covered within the solution space.
+We distinguish between the following perspectives.
+
+\begin{itemize}
+	\item The \textbf{data perspective} focuses on the data and information that is processes by
+	 a system. The data structure, types and restrictions are of interest, but not
+	 how this data is processed.
+	
+	
+	  Data models are defined at the type (modeling) level. Thus, we talk about types and
+		relationships between types. Data models can be represented by ER and EER diagrams
+		  (with \textsf{Entities}, \textsf{Relationships} and \textsf{Attributes}). 
+			(EER also support specialization and generalization of entity types.)
+			 Class diagrams are also used to document data (e.g., a class refers to a set of 
+		
+    In order to build data model (e.g., an EER diagram), requirements engineers have to
+		 identity \emph{entities}, \emph{relationships} and \emph{attributes}.
+		
+	\item The \textbf{functional perspective} defines how data is manipulated. This also includes input and output
+	 relations between processing steps. The functional perspective is mainly documented by \emph{data flow} diagrams.
+	Data flow diagrams can be refined, ending up with a hierarchy of different levels (of granularity).
+	   
+		
+		
+	\item The \textbf{Behavioral perspective} defines the (reactive) behavior of a system. In this perspective,
+	  the external stimuli that the system receive and the reactions of the system as well as the relationships
+		 between the input and the reactions are specified in this perspective. 
+		This perspective is mainly expressed by automata and statecharts.
+		Accordingly, the key parts of these models are \emph{state}, \emph{event} and \emph{state transition}.
+		
+		In order to build a statechart for a certain domain, the requirement engineer has to
+		   define \emph{states} and \emph{transitions} between states.
+		
+\end{itemize}
+
+To sum up, I doubt whether the \emph{domain-oriented view} refers to the \emph{data perspective} is
+solution-oriented requirements engineering. Parts (entities) of the functional and behavioral perspective
+also refer to the domain and there are relationships (mappings, alignments) between elements
+of the different views (and these mappings express the relatedness (or even equality) of elements
+in different perspectives.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
